@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+index-CEkGBXu7.js
 
 # Editor directories and files
 .vscode/*
