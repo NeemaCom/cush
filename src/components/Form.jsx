@@ -75,7 +75,7 @@ const Form = () => {
 
   return (
     <>
-      <div className='px-8 lg:px-68 pb-20'>
+      <div className='px-8 lg:px-58 pb-20'>
         <form onSubmit={handleSubmit}>
           <p className='text-gray-600 font-bold mb-4'>
             Fill up the form below step-wise.
@@ -103,7 +103,7 @@ const Form = () => {
             <div>
               <label
                 htmlFor='pcccountry'
-                className='block mb-2 font-bold text-blue-600'>
+                className='block mb-2 text-md font-bold text-gray-900'>
                 Select the Country You Need PCC from*
               </label>
               <input
