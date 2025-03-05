@@ -5,5 +5,5 @@ import menu_icon from '../assets/menu_icon.svg';
 export const assets = {
     LogoPNG,
     cross_icon,
-    menu_icon
+    menu_icon,
 }
