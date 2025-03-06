@@ -1,11 +1,13 @@
 import React from "react";
-
+import { assets } from "../assets/asset";
 const Commitment = () => {
   return (
     <div className='flex items-center justify-center mt-5 '>
-      <div className='flex'>
-        <div className='w-full p-20'>hello world</div>
-        <div className='w-full p-20'>
+      <div className='grid grid-cols-1 md:grid-cols-2'>
+        <div className='order-2 md:order-0 w-full py-20 px-10 md:p-20'>
+          <img src={assets.working} alt='' />
+        </div>
+        <div className='w-full py-20 px-10 md:p-20'>
           <h1 className=' font-extrabold text-2xl pb-5'>
             Our Commitment To You{" "}
           </h1>

@@ -13,7 +13,6 @@ const Home = () => {
       <Hero />
       <Trusted />
       <Commitment />
-      <Footer />
     </div>
   );
 };
