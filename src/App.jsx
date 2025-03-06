@@ -12,18 +12,19 @@ import RootLayout from "./Layout/RootLayout";
 import User from "./pages/User";
 import UserLayout from "./Layout/UserLayout";
 import NotFound from "./pages/NotFound";
+import Form from "./components/Form";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path='/' element={<RootLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Login />} />
           <Route path='signup' element={<Register />} />
-          <Route path='login' element={<Login />} />
 
           <Route path='user' element={<UserLayout />}>
             <Route index element={<User />} />
+            <Route path='form' element={<Form />} />
           </Route>
 
           <Route path='*' element={<NotFound />} />

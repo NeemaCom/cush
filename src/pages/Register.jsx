@@ -3,14 +3,14 @@ import { Link } from "react-router";
 import { assets } from "../assets/asset";
 import { useNavigate } from "react-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../Firebase";
+import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [fName, setFName] = useState();
-  const [lName, setLName] = useState();
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,19 +26,18 @@ const Register = () => {
       const user = userCredential.user;
 
       if (user) {
-        const newData = {
+        const cusherData = {
           email: user.email,
           surname: lName,
           fName: fName,
-          // Default amount
           role: "user", // Default role
           createdAt: new Date(), // Timestamp of account creation
 
           // ... any other fields with default/random values
         };
-        await setDoc(doc(db, "cushusers", user.uid), newData);
+        await setDoc(doc(db, "cushusers", user.uid), cusherData);
         console.log("Account created successfully!");
-        navigate("/login");
+        navigate("/");
         toast.success("Account Regitered successfully", {
           position: "top-center",
         });
@@ -49,6 +48,22 @@ const Register = () => {
       toast.error(error.message, {
         position: "top-center",
       });
+      if (error.code === "auth/weak-password") {
+        toast.error("Password is too weak. Please use a stronger password.", {
+          position: "top-center",
+        });
+      } else if (error.code === "auth/email-already-in-use") {
+        toast.error(
+          "Email already in use. Please sign in or use a different email.",
+          { position: "top-center" }
+        );
+      } else if (error.code === "auth/invalid-email") {
+        toast.error("Invalid email format.", { position: "top-center" });
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.", {
+          position: "top-center",
+        });
+      }
     }
     setLName("");
     setFName("");
@@ -57,7 +72,7 @@ const Register = () => {
   };
 
   return (
-    <div className='mt-20'>
+    <div className='mt-25 mb-10'>
       <div className='flex items-center justify-center  min-h-[80vh]'>
         <div className=''>
           <div className='flex items-center justify-center'>
@@ -69,7 +84,7 @@ const Register = () => {
               <p className=' text-gray-900'>
                 Already registered?{" "}
                 <Link
-                  to='/login'
+                  to='/'
                   className='border-2 border-blue-500 px-2 pb-1 rounded-md'>
                   signin
                 </Link>

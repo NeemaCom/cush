@@ -23,7 +23,7 @@ const User = () => {
       setLoading(true);
       if (user) {
         try {
-          const userDocRef = doc(db, "myusers", user.uid); // Use user's UID
+          const userDocRef = doc(db, "cushusers", user.uid); // Use user's UID
           const userSnap = await getDoc(userDocRef);
           if (userSnap.exists()) {
             setUserData(userSnap.data());
@@ -76,18 +76,18 @@ const User = () => {
             <div className='px-5 flex items-center justify-between'>
               <div>
                 <p className='text-sm font-bold pl-5 py-2'>Welcome back,</p>
-                <h1 className='flex px-2 rounded-lg font-bold items-center gap-4 border-2 border-red-400 text-red-400'>
+                <h1 className='flex px-2 rounded-lg font-bold items-center gap-4 border-2 border-blue-500 text-blue-500'>
                   {newData.surname} {newData.fName}{" "}
                   <FaCheckCircle className='text-green-400' />
                 </h1>
               </div>
               <div>
                 <Link to='profile'>
-                  <FaUserCircle className='text-red-400 w-8 h-12' />
+                  <FaUserCircle className='text-blue-500 w-8 h-12' />
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className='bg-red-400 px-4 rounded-md text-gray-100'>
+                  className='bg-blue-500 px-4 rounded-md text-gray-100'>
                   Logout
                 </button>
               </div>
@@ -95,13 +95,13 @@ const User = () => {
 
             <div className='flex gap-5 items-center justify-center pt-5'>
               <Link
-                to='deposit'
-                className='border-2 gap-x-2 flex items-center bg-red-400 text-gray-100 font-bold px-5 py-2 rounded-full'>
+                to='form'
+                className='border-2 gap-x-2 mb-20 flex items-center bg-blue-500 text-gray-100 font-bold px-5 py-2 rounded-full'>
                 <p>
                   {" "}
                   <FaPlusCircle />
                 </p>
-                <p>Deposit</p>
+                <p>Apply for Pcc</p>
               </Link>
             </div>
           </div>

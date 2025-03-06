@@ -4,6 +4,7 @@ import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { toast } from "react-toastify";
+import Apply from "./Apply";
 
 const Form = () => {
   const vegetableSelectId = useId();
@@ -75,7 +76,8 @@ const Form = () => {
 
   return (
     <>
-      <div className='px-8 lg:px-58 pb-20'>
+      <Apply />
+      <div className='px-8 lg:px-58 pb-20 '>
         <form onSubmit={handleSubmit}>
           <p className='text-gray-600 font-bold mb-4'>
             Fill up the form below step-wise.

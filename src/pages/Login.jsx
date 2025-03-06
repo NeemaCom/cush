@@ -3,12 +3,12 @@ import { Link } from "react-router";
 import { assets } from "../assets/asset";
 import { useNavigate } from "react-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../fireconfig";
+import { auth, db } from "../firebase";
 import { toast } from "react-toastify";
 import { doc, getDoc } from "firebase/firestore";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

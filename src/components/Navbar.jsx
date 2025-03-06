@@ -28,7 +28,7 @@ const Navbar = () => {
 
           <ul className='hidden md:flex gap-7 lg:gap-7 text-gray-900 text-md px-4'>
             <NavLink
-              to={"/login"}
+              to={"/"}
               className='cursor-pointer hover:text-gray-400 border-2 border-blue-500 rounded-xl px-5 py-1'>
               Login
             </NavLink>
@@ -91,7 +91,7 @@ const Navbar = () => {
                             font-medium'>
             <NavLink
               onClick={() => setShowMobileMenu(false)}
-              to={"/login"}
+              to={"/"}
               className='px-4 rounded-full inline-block'>
               Login
             </NavLink>
