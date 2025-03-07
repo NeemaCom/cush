@@ -13,6 +13,7 @@ import User from "./pages/User";
 import UserLayout from "./Layout/UserLayout";
 import NotFound from "./pages/NotFound";
 import Form from "./components/Form";
+import PrivateRouteLayout from "./Layout/PrivateRouteLayout";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -21,12 +22,12 @@ const App = () => {
         <Route path='/' element={<RootLayout />}>
           <Route index element={<Login />} />
           <Route path='signup' element={<Register />} />
-
-          <Route path='user' element={<UserLayout />}>
-            <Route index element={<User />} />
-            <Route path='form' element={<Form />} />
+          <Route element={<PrivateRouteLayout />}>
+            <Route path='user' element={<UserLayout />}>
+              <Route index element={<User />} />
+              <Route path='form' element={<Form />} />
+            </Route>
           </Route>
-
           <Route path='*' element={<NotFound />} />
         </Route>
       </>
