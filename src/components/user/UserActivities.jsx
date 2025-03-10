@@ -1,40 +1,8 @@
 import React from "react";
-import { FiCheck, FiMessageSquare, FiFile, FiStar } from "react-icons/fi";
+
+import { Link } from "react-router-dom";
+
 const UserActivities = () => {
-  const activities = [
-    {
-      id: 1,
-      type: "completion",
-      icon: <FiCheck className='h-5 w-5 text-green-500' />,
-      content: "Completed the Frontend Development task",
-      timestamp: "2 hours ago",
-      bgColor: "bg-green-100",
-    },
-    {
-      id: 2,
-      type: "comment",
-      icon: <FiMessageSquare className='h-5 w-5 text-blue-500' />,
-      content: "Commented on API Documentation",
-      timestamp: "4 hours ago",
-      bgColor: "bg-blue-100",
-    },
-    {
-      id: 3,
-      type: "file",
-      icon: <FiFile className='h-5 w-5 text-purple-500' />,
-      content: "Uploaded new design files",
-      timestamp: "6 hours ago",
-      bgColor: "bg-purple-100",
-    },
-    {
-      id: 4,
-      type: "achievement",
-      icon: <FiStar className='h-5 w-5 text-yellow-500' />,
-      content: 'Earned "Quick Learner" badge',
-      timestamp: "1 day ago",
-      bgColor: "bg-yellow-100",
-    },
-  ];
   return (
     <>
       <div className='bg-white shadow rounded-lg'>
@@ -78,9 +46,11 @@ const UserActivities = () => {
             <button className='bg-blue-500 text-gray-100 rounded-md px-4 py-1 mb-2'>
               Feeds
             </button>
-            <button className='bg-blue-500 text-gray-100 rounded-md px-4 py-1 mb-2'>
+            <Link
+              to={"form"}
+              className='bg-blue-500 text-gray-100 rounded-md px-4 py-1 mb-2'>
               PCC
-            </button>
+            </Link>
           </div>
         </div>
       </div>

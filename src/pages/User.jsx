@@ -19,7 +19,6 @@ const auth = getAuth();
 const db = getFirestore();
 
 const User = () => {
-  const navigate = useNavigate();
   const [newData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -48,17 +47,6 @@ const User = () => {
     return () => unsubscribe(); // Clean up on unmount
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/");
-      toast.success("Logout successful", { position: "top-center" });
-    } catch (error) {
-      console.error("Logout error:", error);
-      toast.error("Logout failed", { position: "top-center" }); //Inform user of failure
-    }
-  };
-
   if (loading) {
     return (
       <div
@@ -76,7 +64,6 @@ const User = () => {
   return (
     <div className='pt-20'>
       <div className='min-h-screen bg-gray-50'>
-        <UserHeader />
         <main className='py-6'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
@@ -95,9 +82,6 @@ const User = () => {
             </div>
           </div>
         </main>
-        <button>
-          <Link onClick={handleLogout}>Logout</Link>
-        </button>
       </div>
     </div>
   );
