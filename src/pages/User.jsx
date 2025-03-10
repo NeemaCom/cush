@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router";
 
-import { FaPlusCircle, FaUserCircle, FaCheckCircle } from "react-icons/fa";
+// import { FaPlusCircle, FaUserCircle, FaCheckCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
-import Login from "./Login";
+// import Login from "./Login";
+import UserHeader from "../components/user/UserHeader";
+import UserProfile from "../components/user/UserProfile";
+import UserStats from "../components/user/UserStats";
+import UserActivities from "../components/user/UserActivities";
+import UserTasks from "../components/user/UserTask";
 
 const auth = getAuth();
 const db = getFirestore();
@@ -70,45 +75,30 @@ const User = () => {
 
   return (
     <div className='pt-20'>
-      {newData ? (
-        <>
-          <div className='pt-5'>
-            <div className='px-5 flex items-center justify-between'>
-              <div>
-                <p className='text-sm font-bold pl-5 py-2'>Welcome back,</p>
-                <h1 className='flex px-2 rounded-lg font-bold items-center gap-4 border-2 border-blue-500 text-blue-500'>
-                  {newData.surname} {newData.fName}{" "}
-                  <FaCheckCircle className='text-green-400' />
-                </h1>
+      <div className='min-h-screen bg-gray-50'>
+        <UserHeader />
+        <main className='py-6'>
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='grid grid-cols-1 gap-6 lg:grid-cols-3'>
+              {/* Left column - Profile and Stats */}
+              <div className='lg:col-span-1'>
+                <UserProfile />
+                <UserStats />
               </div>
-              <div>
-                <Link to='profile'>
-                  <FaUserCircle className='text-blue-500 w-8 h-12' />
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className='bg-blue-500 px-4 rounded-md text-gray-100'>
-                  Logout
-                </button>
+              {/* Right column - Activities and Tasks */}
+              <div className='lg:col-span-2'>
+                <UserActivities />
+                <div className='mt-6'>
+                  <UserTasks />
+                </div>
               </div>
-            </div>
-
-            <div className='flex gap-5 items-center justify-center pt-5'>
-              <Link
-                to='form'
-                className='border-2 gap-x-2 mb-20 flex items-center bg-blue-500 text-gray-100 font-bold px-5 py-2 rounded-full'>
-                <p>
-                  {" "}
-                  <FaPlusCircle />
-                </p>
-                <p>Apply for Pcc</p>
-              </Link>
             </div>
           </div>
-        </>
-      ) : (
-        <Login />
-      )}
+        </main>
+        <button>
+          <Link onClick={handleLogout}>Logout</Link>
+        </button>
+      </div>
     </div>
   );
 };
