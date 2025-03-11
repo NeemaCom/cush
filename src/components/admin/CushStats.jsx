@@ -80,7 +80,7 @@ const CushStats = () => {
   ];
 
   if (userError || applicationError) {
-    return <div className='text-red-500'>{userError || applicationError}</div>;
+    return <div className='text-red-700'>{userError || applicationError}</div>;
   }
 
   return (
