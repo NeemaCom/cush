@@ -1,15 +1,8 @@
 import React from "react";
-import { Link } from "react-router";
-
-// import { FaPlusCircle, FaUserCircle, FaCheckCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
-// import Login from "./Login";
-import UserHeader from "../components/user/UserHeader";
 import UserProfile from "../components/user/UserProfile";
 import UserStats from "../components/user/UserStats";
 import UserActivities from "../components/user/UserActivities";

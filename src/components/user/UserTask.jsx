@@ -1,5 +1,4 @@
 import React from "react";
-import { FiClock, FiCheckCircle } from "react-icons/fi";
 import { GrTransaction } from "react-icons/gr";
 
 const UserTask = () => {
@@ -14,10 +13,12 @@ const UserTask = () => {
         <div className='overflow-hidden'>
           <ul className='divide-y divide-gray-200'>
             <li className='py-4'>
-              <div className='flex items-center justify-center'>
-                <div className='flex items-center'>
-                  <GrTransaction className='h-20 w-20 text-blue' />
-                <p>You currently have no transaction records</p>
+              <div className=''>
+                <div className='mx-auto'>
+                  <GrTransaction className='h-20 w-20 text-blue mx-auto' />
+                  <p className='text-center'>
+                    You currently have no transaction records
+                  </p>
                 </div>
               </div>
             </li>

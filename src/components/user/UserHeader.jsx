@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiBell, FiSettings, FiUser } from "react-icons/fi";
+import { FiBell, FiSettings } from "react-icons/fi";
 import { auth, db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -57,7 +57,7 @@ const UserHeader = () => {
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
               <span className='text-xl font-semibold text-gray-800'>
-                MyDashboard
+                My Account
               </span>
             </div>
           </div>
@@ -67,19 +67,7 @@ const UserHeader = () => {
               className='bg-blue-500 px-4 py-1 text-gray-100 font-bold rounded-md'>
               logout
             </button>
-            <button className='p-1 rounded-full text-gray-400 hover:text-gray-500'>
-              <span className='sr-only'>View notifications</span>
-              <div className='relative'>
-                <FiBell className='h-6 w-6' />
-                <span className='absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 flex items-center justify-center text-xs text-white'>
-                  3
-                </span>
-              </div>
-            </button>
-            <button className='p-1 rounded-full text-gray-400 hover:text-gray-500'>
-              <span className='sr-only'>Settings</span>
-              <FiSettings className='h-6 w-6' />
-            </button>
+
             <div className='flex items-center'>
               <button className='flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900'>
                 <FaCircleUser className='h-6 w-6' />

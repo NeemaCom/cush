@@ -25,7 +25,7 @@ const UserStats = () => {
     datasets: [
       {
         label: "Daily Progress",
-        data: [65, 72, 68, 85, 75, 80, 70],
+        data: [0, 5, 10, 5, 8, 4, 2],
         fill: false,
         borderColor: "rgb(75, 192, 192)",
         tension: 0.1,
@@ -54,12 +54,12 @@ const UserStats = () => {
       </div>
       <div className='mt-6 grid grid-cols-2 gap-4'>
         <div className='bg-green-50 p-4 rounded-lg'>
-          <p className='text-sm font-medium text-green-600'>Tasks Completed</p>
-          <p className='mt-2 text-3xl font-semibold text-green-900'>24</p>
+          <p className='text-sm font-medium text-red-600'>Tasks Completed</p>
+          <p className='mt-2 text-3xl font-semibold text-green-900'>0</p>
         </div>
         <div className='bg-blue-50 p-4 rounded-lg'>
           <p className='text-sm font-medium text-blue-600'>Hours Logged</p>
-          <p className='mt-2 text-3xl font-semibold text-blue-900'>37.5</p>
+          <p className='mt-2 text-3xl font-semibold text-blue-900'>0.02</p>
         </div>
       </div>
     </div>

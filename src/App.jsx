@@ -5,7 +5,6 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RootLayout from "./Layout/RootLayout";
@@ -14,6 +13,8 @@ import UserLayout from "./Layout/UserLayout";
 import NotFound from "./pages/NotFound";
 import Form from "./components/Form";
 import PrivateRouteLayout from "./Layout/PrivateRouteLayout";
+import AdminLayout from "./Layout/AdminLayout";
+import Admin from "./pages/Admin";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -28,6 +29,9 @@ const App = () => {
           <Route path='user' element={<UserLayout />}>
             <Route index element={<User />} />
             <Route path='form' element={<Form />} />
+          </Route>
+          <Route path='admin' element={<AdminLayout />}>
+            <Route index element={<Admin />} />
           </Route>
         </Route>
       </>
