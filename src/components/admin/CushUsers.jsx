@@ -75,6 +75,7 @@ const CushUsers = () => {
 
   return (
     <>
+      <div className='text-2xl font-bold'>Cush Users</div>
       <div className='flex mt-10 rounded drop-shadow-md pr-30'>
         <div className='p-8 bg-purple-50'>
           <table className='font-bold'>
@@ -218,7 +219,7 @@ const CushUsers = () => {
                       </>
                     ) : (
                       <button
-                        className='bg-red-400 text-left font-sm py-1 px-3 mt-5'
+                        className='bg-blue-500 text-left font-sm py-1 px-3 mt-5'
                         onClick={() => handleEditClick(user.id)}>
                         Edit
                       </button>
