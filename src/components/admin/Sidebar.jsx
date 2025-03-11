@@ -37,7 +37,7 @@ const Sidebar = ({ onSectionChange }) => {
       <ul className='list-none p-0 m-0'>
         <li className='p-2'>
           <button
-            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-gray-700 w-full text-left'
+            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-blue-800 w-full text-left'
             onClick={() => {
               onSectionChange("home");
               setIsOpen(false);
@@ -48,7 +48,7 @@ const Sidebar = ({ onSectionChange }) => {
         </li>
         <li className='p-2'>
           <button
-            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-gray-700 w-full text-left'
+            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-blue-800 w-full text-left'
             onClick={() => {
               onSectionChange("profile");
               setIsOpen(false);
@@ -59,7 +59,7 @@ const Sidebar = ({ onSectionChange }) => {
         </li>
         <li className='p-2'>
           <button
-            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-gray-700 w-full text-left'
+            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-blue-800 w-full text-left'
             onClick={() => {
               onSectionChange("settings");
               setIsOpen(false);
@@ -70,7 +70,7 @@ const Sidebar = ({ onSectionChange }) => {
         </li>
         <li className='p-2'>
           <button
-            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-gray-700 w-full text-left'
+            className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-blue-800 w-full text-left'
             onClick={() => {
               onSectionChange("logout");
               setIsOpen(false);
