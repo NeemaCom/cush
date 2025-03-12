@@ -6,6 +6,7 @@ import {
   onSnapshot,
   getFirestore,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const db = getFirestore();
 
@@ -51,7 +52,7 @@ const CushUsers = () => {
     if (Object.keys(updates).length > 0) {
       try {
         await updateDoc(docRef, updates);
-        console.log("Document successfully updated!");
+        toast.success("Document successfully updated!");
         setEditingUserId(null);
 
         setUsers(

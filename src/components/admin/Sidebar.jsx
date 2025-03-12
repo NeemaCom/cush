@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   FaBars,
   FaTimes,
@@ -11,10 +14,23 @@ import {
 const Sidebar = ({ onSectionChange }) => {
   // Destructure the prop
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate("");
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      navigate("/");
+      toast.success("LogOut successful", {
+        position: "top-center",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div
@@ -71,10 +87,7 @@ const Sidebar = ({ onSectionChange }) => {
         <li className='p-2'>
           <button
             className='flex items-center p-2 rounded hover:cursor-pointer hover:bg-blue-800 w-full text-left'
-            onClick={() => {
-              onSectionChange("logout");
-              setIsOpen(false);
-            }}>
+            onClick={handleLogout}>
             <FaSignOutAlt className='mr-3' />
             {isOpen && <span className='whitespace-nowrap'>Logout</span>}
           </button>
