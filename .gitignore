@@ -12,7 +12,8 @@ dist
 dist-ssr
 *.local
 .env
-
+.firebase/hosting.ZGlzdA.cache
+ .firebase/hosting.ZGlzdA.cache
 index-CEkGBXu7.js
 
 # Editor directories and files
