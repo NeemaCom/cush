@@ -37,7 +37,7 @@ const CushUsers = () => {
   };
 
   const handleSaveClick = async (userId) => {
-    const docRef = doc(db, "myusers", userId);
+    const docRef = doc(db, "cushusers", userId);
     const updates = {};
 
     for (const field in editedValues) {
@@ -76,28 +76,64 @@ const CushUsers = () => {
   return (
     <>
       <div className='text-2xl font-bold'>Cush Users</div>
-      <div className='flex mt-10 rounded drop-shadow-md pr-30'>
-        <div className='p-8 bg-purple-50'>
-          <table className='font-bold'>
+      <div className='flex mt-10 rounded drop-shadow-md pr-10'>
+        <div className='p-10 pr-20 bg-purple-50' style={{ width: "110%" }}>
+          <table className='font-bold' style={{ width: "110%" }}>
+            {" "}
+            {/* Set table width */}
             <thead>
-              <tr className='border-2 border-t-0 border-l-0 border-r-0'>
-                <th className='pr-3 pl-1 text-left font-sm'>Sur Name</th>
-                <th className='pr-3 text-left font-sm'>First Name</th>
-                <th className='pr-3 text-left font-sm'>Email</th>
-                <th className='pr-3 text-left font-sm'>Bal</th>
-                <th className='pr-3 text-left font-sm'>Mi Bal</th>
-                <th className='pr-3 text-left font-sm'>Paid</th>
-                <th className='pr-3 text-left font-sm'>Remaining</th>
-                <th className='pr-3 text-left font-sm'>Action</th>
+              <tr className=' border-t-0 border-l-0 border-r-0'>
+                <th
+                  className='pr-3 pl-1 text-left font-sm'
+                  style={{ width: "120px" }}>
+                  Sur Name
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "120px" }}>
+                  First Name
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "150px" }}>
+                  Email
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "80px" }}>
+                  Bal
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "80px" }}>
+                  MiBal
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "80px" }}>
+                  Paid
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "80px" }}>
+                  Remain
+                </th>
+                <th
+                  className='pr-3 text-left font-sm'
+                  style={{ width: "100px" }}>
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
               {users.map((user) => (
                 <tr key={user.id}>
-                  <td className='pr-3 text-left font-sm'>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "120px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-30 px-1'
+                        className='w-full px-1' // Use w-full to fill the cell
                         type='text'
                         value={editedValues.surname || ""}
                         onChange={(e) =>
@@ -108,10 +144,12 @@ const CushUsers = () => {
                       user.surname
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm'>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "120px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-30 px-1'
+                        className='w-full px-1'
                         type='text'
                         value={editedValues.fName || ""}
                         onChange={(e) =>
@@ -122,9 +160,12 @@ const CushUsers = () => {
                       user.fName
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm'>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "150px" }}>
                     {editingUserId === user.id ? (
                       <input
+                        className='w-full'
                         type='email'
                         value={editedValues.email || ""}
                         onChange={(e) =>
@@ -135,10 +176,12 @@ const CushUsers = () => {
                       user.email
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm '>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "80px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-23 px-1 border outline-none border-red-400'
+                        className='w-full px-1 border outline-none border-red-400'
                         type='number'
                         value={editedValues.totalAssets || ""}
                         onChange={(e) =>
@@ -152,10 +195,12 @@ const CushUsers = () => {
                       user.totalAssets
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm'>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "80px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-23 px-1 border outline-none border-red-400'
+                        className='w-full px-1 border outline-none border-red-400'
                         type='number'
                         value={editedValues.totalInvested || ""}
                         onChange={(e) =>
@@ -169,10 +214,12 @@ const CushUsers = () => {
                       user.totalInvested
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm '>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "80px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-23 px-1 border outline-none border-red-400'
+                        className='w-full px-1 border outline-none border-red-400'
                         type='number'
                         value={editedValues.totalBonus || ""}
                         onChange={(e) =>
@@ -186,10 +233,12 @@ const CushUsers = () => {
                       user.totalBonus
                     )}
                   </td>
-                  <td className='pr-3 text-left font-sm '>
+                  <td
+                    className='pr-3 text-left font-sm'
+                    style={{ width: "80px" }}>
                     {editingUserId === user.id ? (
                       <input
-                        className='w-23 px-1 border outline-none border-red-400'
+                        className='w-full px-1 border outline-none border-red-400'
                         type='number'
                         value={editedValues.totalProfit || ""}
                         onChange={(e) =>
@@ -203,11 +252,11 @@ const CushUsers = () => {
                       user.totalProfit
                     )}
                   </td>
-                  <td className=''>
+                  <td className='' style={{ width: "100px" }}>
                     {editingUserId === user.id ? (
                       <>
                         <button
-                          className='bg-green-300 text-left font-sm py-1 px-3'
+                          className='bg-green-300 text-left font-sm py-1 px-3 mb-1 block mt-1'
                           onClick={() => handleSaveClick(user.id)}>
                           Save
                         </button>
