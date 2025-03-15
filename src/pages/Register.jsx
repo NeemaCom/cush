@@ -11,6 +11,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
+  const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,6 +31,7 @@ const Register = () => {
           email: user.email,
           surname: lName,
           fName: fName,
+          country: country,
           role: "user", // Default role
           createdAt: new Date(), // Timestamp of account creation
 
@@ -69,6 +71,7 @@ const Register = () => {
     setFName("");
     setPassword("");
     setEmail("");
+    setCountry("");
   };
 
   return (
@@ -111,6 +114,18 @@ const Register = () => {
                   name=''
                   className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
                   placeholder='Last name'
+                  required
+                />
+              </div>
+
+              <div className='grid grid-cols-1 mb-6'>
+                <input
+                  onChange={(e) => setCountry(e.target.value)}
+                  value={country}
+                  type='text'
+                  name=''
+                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
+                  placeholder='Enter Country'
                   required
                 />
               </div>

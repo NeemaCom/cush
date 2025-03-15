@@ -75,7 +75,7 @@ const UserProfile = () => {
                 <FiMapPin className='h-5 w-5' />
               </dt>
               <dd className='ml-3 text-sm text-gray-900'>
-                {userData.location || "Location not provided"}
+                {userData.country || "Location not provided"}
               </dd>
             </div>
             <div className='flex items-center py-3'>
