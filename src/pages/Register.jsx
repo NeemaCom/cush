@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router";
 import { assets } from "../assets/asset";
 import { useNavigate } from "react-router";
@@ -6,14 +6,17 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import Select from "react-select";
+import countryList from "react-select-country-list";
 
 const Register = () => {
   const navigate = useNavigate();
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
-  const [country, setCountry] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const options = useMemo(() => countryList().getData(), []);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ const Register = () => {
           email: user.email,
           surname: lName,
           fName: fName,
-          country: country,
+          country: selectedCountry ? selectedCountry.label : null,
           role: "user", // Default role
           createdAt: new Date(), // Timestamp of account creation
 
@@ -71,7 +74,26 @@ const Register = () => {
     setFName("");
     setPassword("");
     setEmail("");
-    setCountry("");
+    setSelectedCountry(null);
+  };
+
+  const changeHandler = (selectedOption) => {
+    setSelectedCountry(selectedOption); // Store the entire selected object
+  };
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderColor: state.isFocused
+        ? provided.borderColor
+        : provided.borderColor, // Keep same border color
+      boxShadow: state.isFocused ? "none" : provided.boxShadow, // Remove box shadow (outline)
+      "&:hover": {
+        borderColor: state.isFocused
+          ? provided.borderColor
+          : provided.borderColor, // Keep same on hover
+      },
+    }),
   };
 
   return (
@@ -119,13 +141,13 @@ const Register = () => {
               </div>
 
               <div className='grid grid-cols-1 mb-6'>
-                <input
-                  onChange={(e) => setCountry(e.target.value)}
-                  value={country}
-                  type='text'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
-                  placeholder='Enter Country'
+                <Select
+                  options={options}
+                  value={selectedCountry} // Use selectedCountry state
+                  onChange={changeHandler}
+                  placeholder='Select country'
+                  styles={customStyles}
+                  className='border-2 text-gray-900 rounded-md bg-gray-500 outline-none border-gray-300 focus:outline-0'
                   required
                 />
               </div>
