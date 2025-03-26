@@ -72,7 +72,7 @@ const Navbar = () => {
         </ul> */}
 
         <div
-          className={`md:hidden ${showMobileMenu ? "fixed w-96" : "h-0 w-0"} 
+          className={`md:hidden ${showMobileMenu ? "fixed w-96" : "h-0 w-0"}: 
                             left-0 top-0 bottom-0 overflow-hidden bg-gray-100 text-gray-800 transition-all drop-shadow-lg`}>
           <div className='flex justify-between p-6 cursor-pointer text-green'>
             <NavLink to={"/"} className='text-2xl font-bold text-gray-900'>

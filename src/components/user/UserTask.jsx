@@ -3,7 +3,7 @@ import { GrTransaction } from "react-icons/gr";
 
 const UserTask = () => {
   return (
-    <div className='bg-white shadow rounded-lg'>
+    <div className='bg-white border shadow rounded-lg mt-8 md:mt-0'>
       <div className='p-6'>
         <div className='flex items-center justify-between mb-6'>
           <h2 className='text-lg font-medium text-gray-900'>

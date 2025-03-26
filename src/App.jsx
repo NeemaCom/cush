@@ -4,17 +4,20 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-} from "react-router";
+} from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RootLayout from "./Layout/RootLayout";
-import User from "./pages/User";
-import UserLayout from "./Layout/UserLayout";
+import UserLayout from "./Layout/UserLayout"; // Import UserLayout
 import NotFound from "./pages/NotFound";
 import Form from "./components/Form";
 import PrivateRouteLayout from "./Layout/PrivateRouteLayout";
 import AdminLayout from "./Layout/AdminLayout";
 import Admin from "./pages/Admin";
+import Dashboard from "./components/user/Dashboard";
+import Product from "./components/user/Product";
+import { Settings } from "lucide-react";
+import UserProfile from "./components/user/UserProfile";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -27,7 +30,11 @@ const App = () => {
         </Route>
         <Route element={<PrivateRouteLayout />}>
           <Route path='user' element={<UserLayout />}>
-            <Route index element={<User />} />
+            <Route index element={<Dashboard />} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='products' element={<Product />} />
+            <Route path='profile' element={<UserProfile />} />
+            <Route path='settings' element={<Settings />} />
             <Route path='form' element={<Form />} />
           </Route>
           <Route path='admin' element={<AdminLayout />}>

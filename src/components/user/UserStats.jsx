@@ -1,68 +1,108 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
+"use client"
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts"
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-const UserStats = () => {
-  const progressData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    datasets: [
-      {
-        label: "Daily Progress",
-        data: [0, 5, 10, 5, 8, 4, 2],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-      },
-    ],
-  };
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100,
-      },
-    },
-  };
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+
+const chartData = [
+  { month: "January", desktop: 3000, mobile: 4000 },
+  { month: "February", desktop: 4000, mobile: 2000 },
+  { month: "March", desktop: 5000, mobile: 3000 },
+  { month: "April", desktop: 3000, mobile: 2900 },
+  { month: "May", desktop: 7090, mobile: 4300 },
+  { month: "June", desktop: 6140, mobile: 3400 },
+];
+
+const UserStats = (() => {
+  const currentDate = new Date();
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+
+  const months = [];
+  let startMonth = new Date(2024, 7);
+
+  for (let i = 0; i < 8; i++) {
+    months.push(startMonth.toLocaleDateString(undefined, { month: 'short', year: 'numeric' }));
+    startMonth.setMonth(startMonth.getMonth() + 1);
+  }
+
+  const yTicks = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000];
+
   return (
-    <div className='mt-6 bg-white shadow rounded-lg p-6'>
-      <h3 className='text-lg font-medium text-gray-900'>Weekly Progress</h3>
-      <div className='mt-2'>
-        <Line data={progressData} options={options} />
-      </div>
-      <div className='mt-6 grid grid-cols-2 gap-4'>
-        <div className='bg-green-50 p-4 rounded-lg'>
-          <p className='text-sm font-medium text-red-600'>Tasks Completed</p>
-          <p className='mt-2 text-3xl font-semibold text-green-900'>0</p>
+    <Card className=''>
+      <CardHeader className='mb-3'>
+              <CardTitle className='font-bold pt-1 flex items-center justify-between'>
+                  <h1>Total Balance: $12,000.87</h1>
+                  {/* <h1>34577835546</h1> */}
+              </CardTitle>
+        <CardDescription className='text-[10px] font-bold'>{formattedDate}</CardDescription>
+      </CardHeader>
+      <CardContent className='overflow-hidden'>
+        <ChartContainer config={{
+          desktop: {
+            label: "Desktop",
+            color: "hsl(var(--chart-1))",
+          },
+          mobile: {
+            label: "Mobile",
+            color: "hsl(var(--chart-2))",
+          },
+        }}>
+          <LineChart
+            accessibilityLayer
+            data={chartData}
+            margin={{ top: 5, right: 5, left: 0, bottom: 5 }} // Remove left margin
+          >
+            <CartesianGrid vertical={true} />
+            <XAxis
+              dataKey="month"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={15}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <YAxis
+              ticks={yTicks}
+              axisLine={false} // Remove Y-axis line
+              tickFormatter={(value) => `${value / 1000}k`} // Format to 1k, 2k, etc.
+            />
+            <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+            <Line
+              dataKey="desktop"
+              type="monotone"
+              stroke="red"
+              strokeWidth={1}
+              dot={false}
+            />
+            <Line
+              dataKey="mobile"
+              type="monotone"
+              stroke="blue"
+              strokeWidth={1}
+              dot={false}
+            />
+          </LineChart>
+        </ChartContainer>
+      </CardContent>
+      <CardFooter>
+        <div className="flex w-full justify-center mt-2 text-[13px] font-medium">
+          <div className="grid gap-2">
+            {months.join(" ")}
+          </div>
         </div>
-        <div className='bg-blue-50 p-4 rounded-lg'>
-          <p className='text-sm font-medium text-blue-600'>Hours Logged</p>
-          <p className='mt-2 text-3xl font-semibold text-blue-900'>0.02</p>
-        </div>
-      </div>
-    </div>
-  );
-};
+      </CardFooter>
+    </Card>
+  )
+});
+
 export default UserStats;
