@@ -42,7 +42,7 @@ const UserStats = (() => {
     <Card className=''>
       <CardHeader className='mb-3'>
               <CardTitle className='font-bold pt-1 flex items-center justify-between'>
-                  <h1>Total Balance: $12,000.87</h1>
+                  <h1>Total Balance: $0.00</h1>
                   {/* <h1>34577835546</h1> */}
               </CardTitle>
         <CardDescription className='text-[10px] font-bold'>{formattedDate}</CardDescription>
@@ -57,7 +57,10 @@ const UserStats = (() => {
             label: "Mobile",
             color: "hsl(var(--chart-2))",
           },
-        }}>
+        }}
+        className='pr-2'
+        >
+          
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -95,7 +98,7 @@ const UserStats = (() => {
         </ChartContainer>
       </CardContent>
       <CardFooter>
-        <div className="flex w-full justify-center mt-2 text-[13px] font-medium">
+        <div className="md:flex w-full hidden justify-center mt-2 text-[13px] font-medium">
           <div className="grid gap-2">
             {months.join(" ")}
           </div>

@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div>
       <div className='md:flex gap-x-10 mb-3'>
-      <UserStats />
+      <UserStats className='overflow-hidden' />
       <Loan/>
       </div>
       <UserTask/>
