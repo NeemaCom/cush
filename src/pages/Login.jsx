@@ -75,10 +75,10 @@ const Login = () => {
                   </p>
                 </div>
               </div>
-              <div className='text-gray-100 w-[390px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
+              <div className='text-gray-100 w-[360px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
             <form onSubmit={handleLogin}>
               <div className='grid grid-cols-1 mb-6'>
-                <label htmlFor="email" className='text-gray-900'>Email</label>
+                <label htmlFor="email" className='text-gray-900 text-sm font-bold'>Email</label>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -90,7 +90,7 @@ const Login = () => {
                 />
               </div>
               <div className='grid grid-cols-1 mb-6'>
-                <label htmlFor="password" className='text-gray-900'>Password</label>
+                <label htmlFor="password" className='text-gray-900 text-sm font-bold'>Password</label>
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}

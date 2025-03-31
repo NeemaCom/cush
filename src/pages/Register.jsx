@@ -128,11 +128,11 @@ const Register = () => {
               </p>
             </div>
           </div>
-          <div className='text-gray-100 w-[390px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
+          <div className='text-gray-100 w-[360px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
             <form onSubmit={handleSignUp}>
               <div className='grid grid-cols-2 gap-x-5 mb-6'>
                 <div className="">
-                  <label htmlFor="fname" className='text-gray-900 font-bold py-2'>
+                  <label htmlFor="fname" className='text-gray-900 font-bold py-2 text-sm'>
                     First name
                   </label>
                   <input
@@ -146,7 +146,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="">
-                  <label htmlFor="lName" className='text-gray-900 font-bold py-2'>Last name</label>
+                  <label htmlFor="lName" className='text-gray-900 font-bold py-2 text-sm'>Last name</label>
                   <input
                     onChange={(e) => setLName(e.target.value)}
                     value={lName}
@@ -161,7 +161,7 @@ const Register = () => {
 
               <div className='grid grid-cols-2 mb-6 gap-x-5'>
                 <div>
-                  <label htmlFor="country" className='py-2 text-gray-900 font-bold'>Country</label>
+                  <label htmlFor="country" className='py-2 text-gray-900 font-bold text-sm'>Country</label>
                   <Select
                     options={options}
                     value={selectedCountry}
@@ -173,7 +173,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="">
-                  <label htmlFor="phone" className='text-gray-900 font-bold py-2'>Phone number</label>
+                  <label htmlFor="phone" className='text-gray-900 font-bold py-2 text-sm'>Phone number</label>
                   <input
                     onChange={(e) => setPhone(e.target.value)}
                     value={phone}
@@ -187,7 +187,7 @@ const Register = () => {
               </div>
 
               <div className='grid grid-cols-1 text-gray-900 mb-6'>
-                <label htmlFor="email" className='font-bold'>Enter Email</label>
+                <label htmlFor="email" className='font-bold text-sm'>Enter Email</label>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
@@ -200,7 +200,7 @@ const Register = () => {
               </div>
               <div className='grid grid-cols-2 gap-x-5 mb-6 text-gray-900'>
                 <div className="">
-                  <label htmlFor="setPassword" className='font-bold'>Enter Password</label>
+                  <label htmlFor="setPassword" className='font-bold text-sm'>Enter Password</label>
                   <div className="relative">
                     <input
                       onChange={(e) => setPassword(e.target.value)}
@@ -221,7 +221,7 @@ const Register = () => {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="confirmPassword" className='font-bold'>Confirm Password</label>
+                  <label htmlFor="confirmPassword" className='font-bold text-sm'>Confirm Password</label>
                   <div className="relative">
                     <input
                       onChange={(e) => setConfirmPassword(e.target.value)}
