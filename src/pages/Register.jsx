@@ -8,6 +8,8 @@ import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -16,10 +18,22 @@ const Register = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const options = useMemo(() => countryList().getData(), []);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match.", {
+        position: "top-center",
+      });
+      return;
+    }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -35,10 +49,9 @@ const Register = () => {
           surname: lName,
           fName: fName,
           country: selectedCountry ? selectedCountry.label : null,
-          role: "user", // Default role
-          createdAt: new Date(), // Timestamp of account creation
-
-          // ... any other fields with default/random values
+          phone: phone,
+          role: "user",
+          createdAt: new Date(),
         };
         await setDoc(doc(db, "cushusers", user.uid), cusherData);
         console.log("Account created successfully!");
@@ -75,10 +88,11 @@ const Register = () => {
     setPassword("");
     setEmail("");
     setSelectedCountry(null);
+    setConfirmPassword("");
   };
 
   const changeHandler = (selectedOption) => {
-    setSelectedCountry(selectedOption); // Store the entire selected object
+    setSelectedCountry(selectedOption);
   };
 
   const customStyles = {
@@ -86,100 +100,157 @@ const Register = () => {
       ...provided,
       borderColor: state.isFocused
         ? provided.borderColor
-        : provided.borderColor, // Keep same border color
-      boxShadow: state.isFocused ? "none" : provided.boxShadow, // Remove box shadow (outline)
+        : provided.borderColor,
+      boxShadow: state.isFocused ? "none" : provided.boxShadow,
       "&:hover": {
         borderColor: state.isFocused
           ? provided.borderColor
-          : provided.borderColor, // Keep same on hover
+          : provided.borderColor,
       },
     }),
   };
 
   return (
-    <div className='mt-25 mb-10'>
-      <div className='flex items-center justify-center  min-h-[80vh]'>
-        <div className=''>
+    <div className='bg-gradient-to-b from-blue-200 to-gray-100'>
+      <ToastContainer />
+      <h1 className="px-10 pt-6">
+        <img src={assets.LogoPNG} alt="" />
+      </h1>
+      <div className='flex items-center justify-center min-h-[100vh]'>
+        <div className='border bg-gray-50 pt-3 rounded-lg drop-shadow-lg'>
           <div className='flex items-center justify-center'>
-            <div className='text-center pb-10'>
-              <img className='w-15 mx-auto' src={assets.half} alt='' />
-              <h1 className='font-bold text-2xl sm:text-3xl pt-3'>
-                Get Started For Free
+            <div className='text-center pb-5'>
+              <h1 className='font-bold text-xl sm:text-2xl pt-3 pb-1'>
+                Sign Up
               </h1>
-              <p className=' text-gray-900'>
-                Already registered?{" "}
-                <Link
-                  to='/'
-                  className='border-2 border-blue-500 px-2 pb-1 rounded-md'>
-                  signin
-                </Link>
-                into your account
+              <p className=' text-gray-900 font-bold text-[12px] py-1'>
+                Experience fast, secure, and hassle-free migration
               </p>
             </div>
           </div>
-          <div className='text-gray-100 border-2 w-[350px]  border-gray-200 drop-shadow-md pt-12 pb-12 px-8 rounded-xl'>
+          <div className='text-gray-100 w-[390px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
             <form onSubmit={handleSignUp}>
               <div className='grid grid-cols-2 gap-x-5 mb-6'>
-                <input
-                  onChange={(e) => setFName(e.target.value)}
-                  value={fName}
-                  type='text'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
-                  placeholder='First Name'
-                  required
-                />
-                <input
-                  onChange={(e) => setLName(e.target.value)}
-                  value={lName}
-                  type='text'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
-                  placeholder='Last name'
-                  required
-                />
+                <div className="">
+                  <label htmlFor="fname" className='text-gray-900 font-bold py-2'>
+                    First name
+                  </label>
+                  <input
+                    onChange={(e) => setFName(e.target.value)}
+                    value={fName}
+                    type='text'
+                    name='fname'
+                    className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
+                    placeholder='Enter First Name'
+                    required
+                  />
+                </div>
+                <div className="">
+                  <label htmlFor="lName" className='text-gray-900 font-bold py-2'>Last name</label>
+                  <input
+                    onChange={(e) => setLName(e.target.value)}
+                    value={lName}
+                    type='text'
+                    name='lName'
+                    className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
+                    placeholder='Enter Last name'
+                    required
+                  />
+                </div>
               </div>
 
-              <div className='grid grid-cols-1 mb-6'>
-                <Select
-                  options={options}
-                  value={selectedCountry} // Use selectedCountry state
-                  onChange={changeHandler}
-                  placeholder='Select country'
-                  styles={customStyles}
-                  className='border-2 text-gray-900 rounded-md bg-gray-500 outline-none border-gray-300 focus:outline-0'
-                  required
-                />
+              <div className='grid grid-cols-2 mb-6 gap-x-5'>
+                <div>
+                  <label htmlFor="country" className='py-2 text-gray-900 font-bold'>Country</label>
+                  <Select
+                    options={options}
+                    value={selectedCountry}
+                    onChange={changeHandler}
+                    placeholder='Select country'
+                    styles={customStyles}
+                    className='border text-gray-900 rounded text-[14px] bg-gray-500 outline-none border-gray-300 focus:outline-0'
+                    required
+                  />
+                </div>
+                <div className="">
+                  <label htmlFor="phone" className='text-gray-900 font-bold py-2'>Phone number</label>
+                  <input
+                    onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
+                    type='tel'
+                    name='phone'
+                    className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
+                    placeholder='Enter Pnone number'
+                    required
+                  />
+                </div>
               </div>
 
-              <div className='grid grid-cols-1 mb-6'>
+              <div className='grid grid-cols-1 text-gray-900 mb-6'>
+                <label htmlFor="email" className='font-bold'>Enter Email</label>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   type='email'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
+                  name='email'
+                  className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
                   placeholder='Enter Email'
                   required
                 />
               </div>
-              <div className='grid grid-cols-1 mb-6'>
-                <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  type='password'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
-                  placeholder='Enter Password'
-                  required
-                />
+              <div className='grid grid-cols-2 gap-x-5 mb-6 text-gray-900'>
+                <div className="">
+                  <label htmlFor="setPassword" className='font-bold'>Enter Password</label>
+                  <div className="relative">
+                    <input
+                      onChange={(e) => setPassword(e.target.value)}
+                      value={password}
+                      type={showPassword ? 'text' : 'password'}
+                      name='setPassword'
+                      className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
+                      placeholder='Enter Password'
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 text-[10px] font-bold"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="confirmPassword" className='font-bold'>Confirm Password</label>
+                  <div className="relative">
+                    <input
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      value={confirmPassword}
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      name='confirmPassword'
+                      className='border placeholder:text-gray-900 placeholder:text-[12px] placeholder:font-semibold text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
+                      placeholder='Confirm Password'
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 text-[10px] font-bold"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    >
+                      {showConfirmPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </div>
               </div>
               <button
                 type='submit'
-                className='text-center font-bold text-xl bg-blue-500 w-full rounded-md p-2'>
+                className='text-center font-bold text-xl bg-blue-500 w-full rounded p-2 mb-6'>
                 Sign up
               </button>
             </form>
+            <div className='text-gray-900 text-center'>
+              Already have an account? <Link to='/' className="text-blue-500">SignIn</Link>
+            </div>
           </div>
         </div>
       </div>

@@ -59,55 +59,58 @@ const Login = () => {
   };
 
   return (
-    <div className='mt-20 '>
-      <div className='flex items-center justify-center min-h-[80vh]'>
-        <div className=''>
-          <div className='flex items-center justify-center'>
-            <div className='text-center pb-10'>
-              <img className='w-15 mx-auto' src={assets.half} alt='' />
-              <h1 className='font-bold text-2xl sm:text-3xl pt-3'>
-                Sign in to your account
-              </h1>
-            </div>
-          </div>
-          <div className='text-gray-100 border-2 w-[350px]  border-gray-200 drop-shadow-md pt-5 pb-12 px-8 rounded-xl'>
+    <div className='bg-gradient-to-b from-blue-200 to-gray-100'>
+          <h1 className="px-10 pt-6">
+            <img src={assets.LogoPNG} alt="" />
+          </h1>
+          <div className='flex items-center justify-center min-h-[90vh]'>
+            <div className='border bg-gray-50 pt-3 rounded-lg drop-shadow-lg'>
+              <div className='flex items-center justify-center'>
+                <div className='text-center pb-5'>
+                  <h1 className='font-bold text-xl sm:text-2xl pt-3 pb-1'>
+                    Sign In
+                  </h1>
+                  <p className=' text-gray-900 font-bold text-[12px] py-1'>
+                   Welcome back! Let’s pick up where you left off.
+                  </p>
+                </div>
+              </div>
+              <div className='text-gray-100 w-[390px] sm:w-[450px]  border-gray-200 pb-6 px-4 sm:px-8 rounded-xl'>
             <form onSubmit={handleLogin}>
               <div className='grid grid-cols-1 mb-6'>
+                <label htmlFor="email" className='text-gray-900'>Email</label>
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   type='email'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full  border-gray-300 p-2 outline-none'
+                  name='email'
+                  className='border placeholder:text-gray-900 text-gray-900 rounded bg-gray-50 px-3 w-full  border-gray-300 p-2 outline-none'
                   placeholder='Enter Email'
                   required
                 />
               </div>
               <div className='grid grid-cols-1 mb-6'>
+                <label htmlFor="password" className='text-gray-900'>Password</label>
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   type='password'
-                  name=''
-                  className='border-2 placeholder:text-gray-900 text-gray-900 rounded-md bg-gray-200 px-3 w-full border-gray-300 p-2 outline-none'
+                  name='password'
+                  className='border placeholder:text-gray-900 text-gray-900 rounded bg-gray-50 px-3 w-full border-gray-300 p-2 outline-none'
                   placeholder='Enter Password'
                   required
                 />
               </div>
               <button
                 type='submit'
-                className='text-center font-bold text-xl bg-blue-500 w-full rounded-md p-2'>
+                className='text-center font-bold text-xl bg-blue-500 w-full rounded p-2'>
                 Login
               </button>
+              <Link className="text-blue-500 font-semibold flex justify-end">Forgot Password</Link>
             </form>
-            <p className='p-2 pt-4 text-gray-900'>
-              Dont have an Account?{" "}
-              <Link
-                to='/signup'
-                className='border-2 border-gray-300 px-2 pb-1 rounded-md'>
-                Register
-              </Link>
-            </p>
+            <div className='text-gray-900 text-center pt-5'>
+              Already have an account? <Link to='/signup' className="text-blue-500">sign Up</Link>
+            </div>
           </div>
         </div>
       </div>

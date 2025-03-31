@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className='container lg:mx-auto flex justify-between items-center py-4 px-6 md:px-10 lg:px-32'>
           <h1 className='text-2xl font-bold text-gray-900'>
             <img src={assets.LogoPNG} alt='' />
+            https://www.figma.com/design/tahHAHkruNyGR1zj88AePi/Bluebird-Integrated's-team-library?node-id=3440-3325&p=f&t=ySz03xCaENroOdZW-0
           </h1>
 
           <ul className='hidden md:flex gap-7 lg:gap-7 text-gray-900 text-md px-4'>

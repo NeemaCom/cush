@@ -3,7 +3,7 @@ import { SearchIcon, BellIcon, UserIcon } from "lucide-react";
 
 const UserHeader = () => {
   return (
-    <nav className=" bg-[url('/Userheader.png')] bg-center bg-cover w-[115%]   py-9 border-b border-gray-200 px-4">
+    <nav className=" bg-[url('/Userheader.png')] bg-center bg-cover w-[116%] sm:w-[100%]  py-9 border-b border-gray-200 px-4">
       <div className=' ml-[15%] pl-10 bg-white py-2 rounded-l-lg'>
         <div className='flex-1' /> 
         <div className='flex items-center justify-between gap-10 md:gap-4'>
