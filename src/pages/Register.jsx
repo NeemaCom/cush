@@ -113,10 +113,12 @@ const Register = () => {
   return (
     <div className='bg-gradient-to-b from-blue-200 to-gray-100'>
       <ToastContainer />
-      <h1 className="px-10 pt-6">
-        <img src={assets.LogoPNG} alt="" />
-      </h1>
-      <div className='flex items-center justify-center min-h-[100vh]'>
+      <Link 
+          to='/'
+          className="px-14 pt-6">
+          <img src={assets.LogoPNG} alt="" />
+      </Link>
+      <div className='flex items-center justify-center h-screen'>
         <div className='border bg-gray-50 pt-3 rounded-lg drop-shadow-lg'>
           <div className='flex items-center justify-center'>
             <div className='text-center pb-5'>
@@ -249,7 +251,7 @@ const Register = () => {
               </button>
             </form>
             <div className='text-gray-900 text-center'>
-              Already have an account? <Link to='/' className="text-blue-500">SignIn</Link>
+              Already have an account? <Link to='/login' className="text-blue-500">SignIn</Link>
             </div>
           </div>
         </div>

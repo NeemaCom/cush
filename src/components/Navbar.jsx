@@ -20,59 +20,64 @@ const Navbar = () => {
 
   return (
     <>
-      <div className='absolute top-0 left-0 w-full z-10 bg-white'>
-        <div className='container lg:mx-auto flex justify-between items-center py-4 px-6 md:px-10 lg:px-32'>
-          <NavLink to={"/"} className='text-2xl font-bold text-gray-900'>
+      <div className='absolute top-0 left-0 w-full z-10 bg-blue-200 pr-5 sm:pr-0'>
+        <div className='container bg-blue-500 lg:mx-auto flex justify-between items-center m-3 rounded-xl'>
+          <NavLink to={"/"} className='text-2xl font-bold text-gray-50'>
             <img src={assets.LogoPNG} alt='' />
           </NavLink>
 
-          <ul className='hidden md:flex gap-7 lg:gap-7 text-gray-900 text-md px-4'>
+          <ul className='hidden lg:flex gap-7 lg:gap-7 text-gray-50 font-bold text-md px-4'>
             <NavLink
               to={"/"}
-              className='cursor-pointer hover:text-gray-400 border-2 border-blue-500 rounded-xl px-5 py-1'>
+              className='cursor-pointer '>
+              Home
+            </NavLink>
+            <NavLink
+              to={"/book-session"}
+              className='cursor-pointer '>
+                Book clarity Session
+            </NavLink>
+            <NavLink
+              to={"/book-flight"}
+              className='cursor-pointer'>
+                Book Flight
+            </NavLink>
+            <NavLink
+              to={"/bill-payment"}
+              className='cursor-pointer'>
+                Bill Payment
+            </NavLink>
+            <NavLink
+              to={"/docs"}
+              className='cursor-pointer'>
+                Docs
+            </NavLink>
+          </ul>
+
+          <ul className='hidden md:flex gap-7 lg:gap-7 text-gray-900 font-bold text-md px-4'>
+            <NavLink
+              to={"/login"}
+              className='cursor-pointer text-gray-50 border-2 border-blue-500 rounded-xl px-5 py-1'>
               Login
             </NavLink>
             <NavLink
               to={"/signup"}
-              className='cursor-pointer hover:bg-blue-300 bg-blue-500 rounded-xl px-5 py-1'>
-              Signup
+              className='cursor-pointer hover:bg-white/95 bg-white/90 rounded-xl px-5 py-1'>
+              Create Account
             </NavLink>
           </ul>
-
-          {/* <ul className='hidden md:flex md:items-right gap-x-6 text-purple-900' >
-            <li className='hover:cursor-pointer'>
-              <FaTwitter />
-            </li>
-            <li className='hover:cursor-pointer'>
-              <FaLinkedin />
-            </li>
-            <li className='hover:cursor-pointer'>
-              <FaInstagram />
-            </li>
-          </ul> */}
 
           <img
             onClick={() => setShowMobileMenu(true)}
             src={assets.menu_icon}
-            className='md:hidden w-12 cursor-pointer bg-blue-500 px-2 py-2 rounded'
+            className='lg:hidden w-12 cursor-pointer bg-blue-500 px-3 py-2 rounded'
             alt=''
           />
         </div>
 
-        {/* <ul className='flex justify-end gap-x-4 -mt-3 mb-2 mx-6  md:hidden text-blue-600'>
-          <li className='hover:cursor-pointer'>
-            <FaTwitter />
-          </li>
-          <li className='hover:cursor-pointer'>
-            <FaLinkedin />
-          </li>
-          <li className='hover:cursor-pointer'>
-            <FaInstagram />
-          </li>
-        </ul> */}
-
+        {/* mobile menu */}
         <div
-          className={`md:hidden ${showMobileMenu ? "fixed w-96" : "h-0 w-0"}: 
+          className={`lg:hidden ${showMobileMenu ? "fixed w-96" : "h-0 w-0"}: 
                             left-0 top-0 bottom-0 overflow-hidden bg-gray-100 text-gray-800 transition-all drop-shadow-lg`}>
           <div className='flex justify-between p-6 cursor-pointer text-green'>
             <NavLink to={"/"} className='text-2xl font-bold text-gray-900'>
@@ -81,7 +86,7 @@ const Navbar = () => {
             <img
               onClick={() => setShowMobileMenu(false)}
               src={assets.cross_icon}
-              className='fill-inheri w-10 h-10 cursor-pointer bg-blue-500 px-1  rounded'
+              className='fill-inheri w-10 h-10 cursor-pointer bg-blue-500 px-3  rounded'
               alt=''
             />
           </div>
@@ -89,6 +94,36 @@ const Navbar = () => {
           <ul
             className='flex flex-col items-left gap-2 mt-5 px-5 text-lg 
                             font-medium'>
+            <NavLink
+               onClick={() => setShowMobileMenu(false)}
+              to={"/"}
+              className='cursor-pointer px-4 rounded-full inline-block'>
+              Home
+            </NavLink>
+            <NavLink
+               onClick={() => setShowMobileMenu(false)}
+              to={"/book-session"}
+              className='cursor-pointer px-4 rounded-full inline-block'>
+                Book clarity Session
+            </NavLink>
+            <NavLink
+               onClick={() => setShowMobileMenu(false)}
+              to={"/book-flight"}
+              className='cursor-pointer px-4 rounded-full inline-block'>
+                Book Flight
+            </NavLink>
+            <NavLink
+               onClick={() => setShowMobileMenu(false)}
+              to={"/bill-payment"}
+              className='cursor-pointer px-4 rounded-full inline-block'>
+                Bill Payment
+            </NavLink>
+            <NavLink
+              onClick={() => setShowMobileMenu(false)}
+              to={"/docs"}
+              className='cursor-pointer px-4 rounded-full inline-block'>
+                Docs
+            </NavLink>
             <NavLink
               onClick={() => setShowMobileMenu(false)}
               to={"/"}

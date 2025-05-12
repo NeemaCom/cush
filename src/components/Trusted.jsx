@@ -1,80 +1,78 @@
 import React from "react";
+import { assets } from "@/assets/asset";
+import { motion } from "framer-motion";
 
-// Mock data for withdrawals
-const mockWithdrawals = [
+// Mock data for logos
+const logos = [
   {
     id: "1",
-    user: "Payeer",
+    user: assets.wise,
   },
   {
     id: "2",
-    user: "Tuple",
+    user: assets.nimc,
   },
   {
     id: "3",
-    user: "Mirage",
+    user: assets.nigmigration,
   },
   {
     id: "4",
-    user: "StaticKit",
+    user: assets.flutter,
   },
   {
     id: "5",
-    user: "Transistor",
+    user: assets.stripe,
   },
   {
     id: "6",
-    user: "Transistor",
-  },
-  {
-    id: "7",
-    user: "Transistor",
-  },
-  {
-    id: "8",
-    user: "Workcation",
+    user: assets.paystack,
   },
 ];
 
 const Trusted = () => {
   return (
     <div className='w-full bg-gray-50 py-8 overflow-hidden'>
-      <div className='max-w-7xl mx-auto px-4 '>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className='max-w-7xl mx-auto px-4 '>
         <div className='text-center gap-2 mb-10'>
-          <h2 className='text-lg font-semibold text-gray-900 text-center'>
-            Trusted by over 5 very average small businesses
+          <h2 className='text-lg font-bold text-blue-600 text-center'>
+            Our partners across the globe
           </h2>
         </div>
-        <div className='relative'>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+          className='relative'>
           <div className='flex overflow-hidden'>
             <div className='flex animate-scroll'>
               {/* First set of items */}
-              {mockWithdrawals.map((withdrawal) => (
-                <div
-                  key={`first-${withdrawal.id}`}
+              {logos.map((logo) => (
+                <motion.div
+                  key={`first-${logo.id}`}
                   className='min-w-[150px] px-4 flex-shrink-0'>
-                  <div className='bg-white p-4 rounded-lg border border-gray-200 shadow-sm'>
+                  <div className=''>
                     <div className='flex justify-center items-center'>
                       <div>
-                        <p className='font-medium text-center text-black'>
-                          {withdrawal.user}
-                        </p>
+                        <img src={logo.user} className='font-medium text-center text-black w-30'/>
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
               {/* Duplicate set for seamless loop */}
-              {mockWithdrawals.map((withdrawal) => (
+              {logos.map((logo) => (
                 <div
-                  key={`second-${withdrawal.id}`}
+                  key={`second-${logo.id}`}
                   className='min-w-[150px] px-4 flex-shrink-0'>
-                  <div className='bg-white p-4 rounded-lg border border-gray-200 shadow-sm'>
+                  <div className=''>
                     <div className='flex justify-center items-center'>
                       <div>
-                        <p className='font-medium text-center text-black'>
-                          {withdrawal.user}
-                        </p>
+                        <img src={logo.user} className='font-medium text-center text-black w-30'/>
                       </div>
                     </div>
                   </div>
@@ -82,8 +80,15 @@ const Trusted = () => {
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+          className="text-gray-400 text-center pt-8 font-semibold">
+          At Cush, our mission to simplify migration and provide secure global payment solutions is strengthened through strategic partnerships with industry leaders.
+        </motion.p>
+      </motion.div>
     </div>
   );
 };

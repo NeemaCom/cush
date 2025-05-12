@@ -18,13 +18,16 @@ import Dashboard from "./components/user/Dashboard";
 import Product from "./components/user/Product";
 import { Settings } from "lucide-react";
 import UserProfile from "./components/user/UserProfile";
+import Home from "./pages/Home";
+
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path='/' element={<RootLayout />}>
-          <Route index element={<Login />} />
+          <Route index element={<Home />} />
+          <Route path='login' element={<Login />} />
           <Route path='signup' element={<Register />} />
           <Route path='*' element={<NotFound />} />
         </Route>

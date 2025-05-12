@@ -60,9 +60,11 @@ const Login = () => {
 
   return (
     <div className='bg-gradient-to-b from-blue-200 to-gray-100'>
-          <h1 className="px-10 pt-6">
+          <Link 
+            to='/'
+            className="px-14 pt-6">
             <img src={assets.LogoPNG} alt="" />
-          </h1>
+          </Link>
           <div className='flex items-center justify-center min-h-[90vh]'>
             <div className='border bg-gray-50 pt-3 rounded-lg drop-shadow-lg'>
               <div className='flex items-center justify-center'>
