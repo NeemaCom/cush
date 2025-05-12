@@ -22,7 +22,8 @@ const Help = () => {
                   <div className='space-y-5'>
                         <h1 className='text-gray-900 font-bold text-2xl md:text-3xl'>We’re Here to Help – <br /> Reach Out Anytime!"</h1>
                         <div className='flex items-center gap-4'>
-                            <Link
+                          <Link
+                                to='/signup'
                                 className='bg-blue-500 px-5 py-2 font-bold text-sm rounded-md text-blue-50 md:text-md'
                             >
                                     Get Started

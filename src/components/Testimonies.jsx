@@ -195,6 +195,7 @@ const Testimonies = () => {
                           Do you want to be the next one <br className=' inline md:hidden'/> here?!!!
                     </h3>
                       <Link
+                          to='/signup'
                             className='bg-blue-600 text-white font-bold px-2 py-2 rounded-md text-smm md:px-5 md:text-lg'
                         >
                             Join Now
